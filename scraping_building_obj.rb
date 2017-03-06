@@ -16,15 +16,8 @@ class Post
 	def initialize(url)
 		@url = url
 		@post
+		@comment
 	end
-
-	def comments
-
-	end
-
-	# def add_comment
-	# 	comment = Comment.new()
-	# end
 
 	def fetch!
 		uri = URI.parse(@url)
@@ -47,6 +40,15 @@ class Post
  		id = id.match(/\d+/).to_s
  		puts "Item id: #{id}"
  	end
+
+ 	def add_comment
+ 		comment = @post.css(".comment")
+ 		@comment = comment		
+	end
+
+	def comments
+		puts "Number of comments: #{@comment}" 
+	end
 
 end
 
